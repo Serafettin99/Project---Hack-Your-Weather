@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 
-export default function Form({ getCity }) {
+export default function Form({ getData }) {
   const [city, setCity] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    getCity(city);
+    getData(city);
     setCity('');
   };
-
-  // const handleChange = e => setCity(e.target.value);
 
   return (
     <div>
