@@ -9,6 +9,8 @@ export default function Form({ getData }) {
     setCity('');
   };
 
+  const preventEmptySearch = () => (city < 1 ? true : false);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -19,7 +21,7 @@ export default function Form({ getData }) {
           value={city}
           onChange={e => setCity(e.target.value)}
         />
-        <input type="Submit" value="Search" />
+        <input type="Submit" value="Search" disabled={preventEmptySearch()} />
       </form>
     </div>
   );
