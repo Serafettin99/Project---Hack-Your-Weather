@@ -21,6 +21,7 @@ export default function Weather() {
       })
       .then(data => {
         setWeatherData(data);
+        console.log(data);
         setSearchedDatas([data, ...searchedDatas]);
         setErrorMessage(false);
         setIsLoading(false);
