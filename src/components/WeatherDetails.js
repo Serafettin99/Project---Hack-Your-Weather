@@ -18,10 +18,8 @@ export default function WeatherDetails({ match }) {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?id=${match.params.cityId}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric`,
+        `https://api.openweathermap.org/data/2.5/forecast?id=${match.params.cityID}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric`,
       );
-      console.log(match);
-
       const data = await res.json();
       setFiveDaysForecast(data);
     } catch (error) {
@@ -31,9 +29,7 @@ export default function WeatherDetails({ match }) {
     }
   };
 
-  useEffect(() => {
-    fetchWeatherDetails();
-  }, []);
+  useEffect(fetchWeatherDetails, []);
 
   if (isLoading) return <h2>Loading...</h2>;
   if (hasError) return <h2>Error occured!...</h2>;
