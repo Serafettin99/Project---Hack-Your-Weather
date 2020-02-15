@@ -1,0 +1,19 @@
+.display-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 80vh;
+}
+
+.link h2 {
+  text-align: center;
+}
+
+.link {
+  height: 30px;
+  background-color: darkblue;
+  color: white;
+  width: 50px;
+  border-radius: 4px;
+  text-align: center;
+}

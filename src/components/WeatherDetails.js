@@ -8,6 +8,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import './WeatherDetails.css';
 
 export default function WeatherDetails({ match }) {
   const [fiveDaysForecast, setFiveDaysForecast] = useState({});
@@ -20,6 +21,7 @@ export default function WeatherDetails({ match }) {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?id=${match.params.cityID}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric`,
       );
+
       const data = await res.json();
       setFiveDaysForecast(data);
     } catch (error) {
@@ -37,7 +39,7 @@ export default function WeatherDetails({ match }) {
   const { list, city } = fiveDaysForecast;
 
   return (
-    <div>
+    <div className="display-container">
       <h2>5 Days Forecast</h2>
       <div>
         <h1>
@@ -51,8 +53,8 @@ export default function WeatherDetails({ match }) {
         >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+              <stop offset="5%" stopColor="#B8B6E8" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#blue" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
@@ -66,13 +68,15 @@ export default function WeatherDetails({ match }) {
           <Area
             type="monotone"
             dataKey="main.temp"
-            stroke="#82ca9d"
+            stroke="red"
             fillOpacity={1}
             fill="url(#colorPv)"
           />
         </AreaChart>
       </div>
-      <Link to="/">Back</Link>
+      <Link to="/" className="link">
+        Back
+      </Link>
     </div>
   );
 }

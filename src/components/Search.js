@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Search.css';
 
 export default function Form({ getData }) {
   const [city, setCity] = useState('');
