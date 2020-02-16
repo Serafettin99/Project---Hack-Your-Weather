@@ -10,7 +10,7 @@ export default function City({ data, deleteData }) {
       <div className="button-container">
         <button onClick={() => deleteData(id)}>X</button>
       </div>
-      <Link to={`/${id}`}>
+      <Link to={`/city/${id}`}>
         <h1>
           {name}, {sys.country}
         </h1>

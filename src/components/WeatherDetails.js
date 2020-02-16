@@ -15,23 +15,25 @@ export default function WeatherDetails({ match }) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  const fetchWeatherDetails = async () => {
-    try {
-      setIsLoading(true);
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?id=${match.params.cityID}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric`,
-      );
+  useEffect(() => {
+    async function fetchWeatherDetails() {
+      try {
+        setIsLoading(true);
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?id=${match.params.cityId}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric`,
+        );
 
-      const data = await res.json();
-      setFiveDaysForecast(data);
-    } catch (error) {
-      setHasError(error.message);
-    } finally {
-      setIsLoading(false);
+        const data = await res.json();
+        setFiveDaysForecast(data);
+      } catch (error) {
+        setHasError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  };
 
-  useEffect(fetchWeatherDetails, []);
+    fetchWeatherDetails();
+  }, []);
 
   if (isLoading) return <h2>Loading...</h2>;
   if (hasError) return <h2>Error occured!...</h2>;

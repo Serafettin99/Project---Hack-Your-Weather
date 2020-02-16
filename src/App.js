@@ -9,7 +9,7 @@ function App() {
     <Router>
       <h1>Weather</h1>
       <Switch>
-        <Route path="/:cityID" exact component={WeatherDetails} />
+        <Route path="/city/:cityId" exact component={WeatherDetails} />
         <Route path="/" exact component={Weather} />
       </Switch>
     </Router>
